@@ -1,0 +1,16 @@
+@import "mixin";
+
+.u-spOnly{
+	display: none;
+}
+.u-mt{
+	
+}
+@include mq(sp){
+	.u-spOnly{
+		display: block;
+	}
+	.u-pcOnly{
+		display: none;
+	}
+}

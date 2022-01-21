@@ -1,0 +1,196 @@
+@import "mixin";
+
+.l-header{
+	padding:10px;
+  	background: #ccc;
+}
+.l-mv{
+	width:100%;
+	
+}
+.l-inner{
+	max-width: 980px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+/*　ハンバーガーボタン　*/
+header{
+	
+	@include mq(tab){
+	.l-ham {
+	position: absolute;
+	}
+	}
+}
+.l-ham {
+	@include mq(tab){
+		display : block;
+		position: fixed;
+		z-index : 400;
+		right : 13px;
+		top: 20px;
+		width : 42px;
+		height: 42px;
+		cursor: pointer;
+		text-align: center;
+		margin-top: 0.6vw;
+		span {
+			display : block;
+			position: absolute;
+			width   : 30px;
+			height  : 2px ;
+			left    : 6px;
+			background : #555;
+			-webkit-transition: 0.3s ease-in-out;
+			-moz-transition   : 0.3s ease-in-out;
+			transition        : 0.3s ease-in-out;
+			&:nth-child(1) {
+				top: 10px;
+			}
+			&:nth-child(2) {
+				top: 20px;
+			}
+			&:nth-child(3) {
+				top: 30px;
+			}
+		}
+		&.l-active{
+			span{
+				&:nth-child(1) {
+					top : 16px;
+					left: 6px;
+					-webkit-transform: rotate(-45deg);
+					-moz-transform   : rotate(-45deg);
+					transform        : rotate(-45deg);
+				}
+				&:nth-child(2),
+				&:nth-child(3) {
+					top: 16px;
+					-webkit-transform: rotate(45deg);
+					-moz-transform   : rotate(45deg);
+					transform        : rotate(45deg);
+				}
+			}
+		}
+	}
+}
+.l-header-logo{
+	    width: 20%;
+		@include mq(tab){
+			width: 25%;
+			height: auto;
+			min-width: 170px;
+		}
+	img{
+		width: 100%;
+		height: auto;
+		@include mq(tab){
+			width: 100%;
+			height: auto;
+		}
+		
+	}
+	a{
+		display: block;
+		cursor: pointer;
+	}
+	@include mq(tab){
+		height: 45px;
+	}
+	@include mq(sp){
+		height: 45px;
+	}
+}
+.l-gnav {
+	z-index : 2;
+	text-align: center;
+	width: 84%;
+	display: flex;
+	justify-content: flex-end;
+	@include mq(tab){
+		position: fixed;
+		top  : 80px;
+		left : 0;
+		width: 100%;
+		background: #fff;
+		transform: translateX(100%);
+		transition: all 0.6s;
+		z-index: 300;
+		height:100vh;
+		align-items: center;
+		flex-direction: column-reverse;
+		justify-content: flex-end;
+	}
+	ul {
+		width: 80%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		&:first-child{
+			display: none;
+			@include mq(tab){
+				display: flex;
+			}
+		}
+		&:last-child{
+		    margin-left: 1vw;
+			li{
+				width: 180px;
+				@include mq(tab){
+				    width: 33.333%;
+				}
+				@include mq(sp){
+					width: 100%;
+				}
+			}
+		}
+		@include mq(tab){
+			width: 100%;
+			flex-direction: column;
+			&:last-child{
+				flex-direction: row;
+		    	margin-left: 0;
+			}
+		}
+		@include mq(sp){
+			&:last-child{
+				flex-direction: column;
+			}
+		}
+		li {
+			list-style-type: none;
+			border-bottom: 1px solid #fff;
+			margin-right: 1vw;
+			font-size: .9rem;
+			@include mq(tab){
+				padding: 0 2px;
+				width: 100%;
+				margin-right: 0;
+			}
+			&:last-child {
+				padding-bottom: 0;
+				border-bottom: none;
+				margin-right: 0;
+				@include mq(tab){
+					margin-right: 0;
+				}
+			}
+			&:hover{
+				background :#ddd;
+			}
+			a {
+				display: block;
+				color: #000;
+				text-decoration :none;
+				width: 100%;
+				@include mq(tab){
+					color:#fff;
+				}
+			}
+		}
+	}
+	&.l-active {
+		transform: translateY(0%);
+	}
+}
